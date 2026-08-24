@@ -1,15 +1,15 @@
 const btn_array = [
     {
         btn : document.getElementById('btn-to-history'),
-        to : "history"
+        to : "/worky/history"
     },
     {
         btn : document.getElementById('btn-to-timeSave'),
-        to : "timeSave"
+        to : "/worky/timeSave"
     },
     {
         btn : document.getElementById('btn-to-home'),
-        to : ""
+        to : "/worky/"
     },
     
     
