@@ -1,33 +1,33 @@
-// const btn_array = [
-//     {
-//         btn : document.getElementById('btn-to-history'),
-//         to : "/worky/history"
-//     },
-//     {
-//         btn : document.getElementById('btn-to-timeSave'),
-//         to : "/worky/timeSave"
-//     },
-//     {
-//         btn : document.getElementById('btn-to-home'),
-//         to : "/worky/"
-//     },
-    
-// ]
 const btn_array = [
     {
         btn : document.getElementById('btn-to-history'),
-        to : "/history"
+        to : "/worky/history"
     },
     {
         btn : document.getElementById('btn-to-timeSave'),
-        to : "/timeSave"
+        to : "/worky/timeSave"
     },
     {
         btn : document.getElementById('btn-to-home'),
-        to : "/"
+        to : "/worky/"
     },
-    
 ]
+
+// const btn_array = [
+//     {
+//         btn : document.getElementById('btn-to-history'),
+//         to : "/history"
+//     },
+//     {
+//         btn : document.getElementById('btn-to-timeSave'),
+//         to : "/timeSave"
+//     },
+//     {
+//         btn : document.getElementById('btn-to-home'),
+//         to : "/"
+//     },
+    
+// ]
 
 document.body.insertAdjacentHTML('afterbegin', `
     <div class="bg-[#1e90ff] w-full text-white shadow-md p-4 flex justify-center">
