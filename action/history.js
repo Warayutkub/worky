@@ -6,13 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRefresh = document.getElementById('btn-refresh-history');
     const refreshIcon = document.getElementById('refresh-icon');
 
-    // แปลงวันที่ "YYYY-MM-DD" เป็น "DD/MM/YYYY"
+    // แปลงวันที่ "YYYY-MM-DD" เป็น "DD/MM/YYYY" โดยตัดคำตรงๆ เพื่อป้องกันปัญหา Timezone Shift (วันที่ลดลง 1 วัน)
     function formatDateDisplay(dateStr) {
         if (!dateStr) return '';
         const cleanDate = typeof dateStr === 'string' ? dateStr.split('T')[0] : '';
         const parts = cleanDate.split('-');
         if (parts.length < 3) return dateStr;
-        return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        
+        const year = parts[0];
+        const month = parts[1];
+        const day = parts[2];
+
+        return `${day}/${month}/${year}`;
     }
 
     // แปลงเวลาจาก Google Sheets (เช่น "1899-12-29T22:12:56.000Z") ให้เหลือเฉพาะ "HH:mm"
@@ -37,17 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // แปลงค่า totalTime ให้แสดงผลแม่นยำเหมือนฝั่ง Home
+    // แปลงค่า totalTime ให้แสดงผลแม่นยำเหมือนฝั่ง Home (ทศนิยม 2 ตำแหน่ง)
     function formatHoursDecimal(val) {
         const totalHoursDecimal = parseFloat(val) || 0;
-
-        // แปลงเป็นนาทีก่อนเพื่อความแม่นยำ
-        const totalMinutes = Math.round(totalHoursDecimal * 60);
-        const hours = Math.floor(totalMinutes / 60);
-        const minutes = totalMinutes % 60;
-
-        // คืนค่าทศนิยมที่คำนวณจาก (ชั่วโมง + นาที/60) หรือแสดงแบบทศนิยม 2 ตำแหน่ง
-        // กรณีต้องการแสดงทศนิยม 2 ตำแหน่งเป๊ะๆ เหมือน Home (displayDecimal):
         return totalHoursDecimal.toFixed(2);
     }
 
@@ -57,12 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (historyContainer) {
                 historyContainer.innerHTML = '<p class="text-center text-gray-400 py-8">ไม่มีข้อมูลประวัติการทำงาน</p>';
             }
-            if (grandTotalBadge) grandTotalBadge.textContent = 'Total 0.0 Hrs';
+            if (grandTotalBadge) grandTotalBadge.textContent = 'Total 0.00 Hrs';
             return;
         }
 
-        // เรียงลำดับจากวันที่ล่าสุดขึ้นก่อน
-        const sortedData = [...allData].sort((a, b) => new Date(b.date) - new Date(a.date));
+        // เรียงลำดับจากวันที่ล่าสุดขึ้นก่อนโดยเปรียบเทียบจากสตริงวันที่โดยตรง
+        const sortedData = [...allData].sort((a, b) => {
+            const dateA = typeof a.date === 'string' ? a.date.split('T')[0] : '';
+            const dateB = typeof b.date === 'string' ? b.date.split('T')[0] : '';
+            return dateB.localeCompare(dateA);
+        });
 
         const groups = {};
         let grandTotal = 0;
