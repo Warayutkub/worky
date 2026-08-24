@@ -44,13 +44,13 @@ btn_array.forEach(({btn,to})=>{
         window.location.href = new URL(to, window.location.href).href;
     })
     // || currentPath === `${to}/` || (to !== '/' && currentPath.startsWith(to))
-    if (currentPath === to ) {
-        btn.classList.add(
-            '-translate-y-4',
-            'transition-all',
-            'duration-300',
-            'ease-out'
-        );
-    }
+    // if (currentPath === to ) {
+    //     btn.classList.add(
+    //         '-translate-y-4',
+    //         'transition-all',
+    //         'duration-300',
+    //         'ease-out'
+    //     );
+    // }
 })
 
