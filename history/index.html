@@ -15,81 +15,31 @@
         <h1 class="font-bold text-2xl text-gray-800">
             Work History
         </h1>
-        <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
-            Total 15.5 Hrs
-        </span>
+        <div class="flex items-center gap-2">
+            <!-- Badge แสดงชั่วโมงรวมทั้งหมด -->
+            <span id="grand-total-badge" class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                Total 0.0 Hrs
+            </span>
+            <!-- ปุ่ม Refresh -->
+            <button title="refresh" id="btn-refresh-history" class="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-all active:scale-95">
+                <svg id="refresh-icon" class="w-4 h-4 text-blue-600 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 
-    <!-- History Container -->
-    <div class="w-full max-w-md px-6 flex flex-col gap-6">
+    <!-- Dynamic History Container -->
+    <div id="history-container" class="w-full max-w-md px-6 flex flex-col gap-6">
 
-        <!-- ================= SECTION: NOVEMBER 2026 ================= -->
-        <div class="flex flex-col gap-3">
-            <!-- Month Header -->
+        <!-- Skeleton Loading (จะถูกซ่อนอัตโนมัติเมื่อข้อมูลมา) -->
+        <div id="history-loading" class="flex flex-col gap-3">
             <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <h2 class="font-bold text-lg text-gray-700">November 2026</h2>
-                <span class="text-xs font-medium text-gray-400">15.5 Hrs total</span>
+                <div class="h-6 bg-gray-200 rounded animate-pulse w-32"></div>
+                <div class="h-4 bg-gray-200 rounded animate-pulse w-20"></div>
             </div>
-
-            <!-- Item 1 -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                        <span class="font-bold text-gray-800">28/11/2026</span>
-                    </div>
-                    <span class="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-xl text-xs">
-                        8.0 Hr.
-                    </span>
-                </div>
-                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
-                    <span class="text-gray-400">09:00 - 17:00</span>
-                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Design screens for Worky app</span>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                        <span class="font-bold text-gray-800">27/11/2026</span>
-                    </div>
-                    <span class="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-xl text-xs">
-                        7.5 Hr.
-                    </span>
-                </div>
-                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
-                    <span class="text-gray-400">09:30 - 17:00</span>
-                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Fix navigation bugs & UI</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= SECTION: OCTOBER 2026 ================= -->
-        <div class="flex flex-col gap-3">
-            <!-- Month Header -->
-            <div class="flex justify-between items-center border-b border-gray-200 pb-2">
-                <h2 class="font-bold text-lg text-gray-700">October 2026</h2>
-                <span class="text-xs font-medium text-gray-400">16.0 Hrs total</span>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-gray-400"></span>
-                        <span class="font-bold text-gray-800">31/10/2026</span>
-                    </div>
-                    <span class="font-bold text-gray-600 bg-gray-100 px-3 py-1 rounded-xl text-xs">
-                        8.0 Hr.
-                    </span>
-                </div>
-                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
-                    <span class="text-gray-400">08:30 - 16:30</span>
-                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Setup project structure</span>
-                </div>
-            </div>
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm h-20 animate-pulse"></div>
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm h-20 animate-pulse"></div>
         </div>
 
     </div>
@@ -108,6 +58,7 @@
     </nav>
 
     <script src="../action/navAction.js"></script>
+    <script src="../action/history.js"></script>
 </body>
 
 </html>

@@ -10,25 +10,30 @@
 
 <body class="flex flex-col items-center gap-6 bg-gray-50 min-h-screen pb-20">
 
-
-
     <div class="bg-white shadow-xl rounded-3xl border border-gray-100 p-8 w-[95%] max-w-2xl flex flex-col gap-8">
 
         <div class="flex flex-row justify-between items-center gap-6 bg-blue-50 p-4 rounded-2xl border border-blue-100">
             <div class="flex flex-col gap-2 font-semibold text-blue-950">
-                <span class="text-4xl">15 Hr.</span>
-                <span class="text-2xl text-blue-800/80">30 min.</span>
+                <span class="text-4xl" id="display-hr-min">0 Hr.</span>
+                <span class="text-2xl text-blue-800/80" id="display-min">0 min.</span>
             </div>
 
             <div class="bg-blue-200 w-px h-16 rounded-full"></div>
 
             <div class="flex flex-col gap-1 items-end font-bold text-right text-blue-950">
-                <span class="text-5xl">15.5</span>
+                <span class="text-5xl" id="display-decimal">0.0</span>
                 <span class="text-2xl text-blue-800/80">Hr.</span>
             </div>
         </div>
 
         <form action="" class="flex flex-col gap-6">
+
+            <!-- เพิ่มช่องรับ Date ตรงนี้ -->
+            <div class="flex flex-col gap-2">
+                <label for="work-date" class="font-semibold text-gray-700">Date</label>
+                <input type="date" name="work-date" id="work-date"
+                    class="border border-gray-200 p-3.5 rounded-xl bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition text-gray-700 font-medium">
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="flex flex-col gap-2">
@@ -46,13 +51,13 @@
 
             <div class="flex flex-col gap-2">
                 <label for="teaching-hour" class="font-semibold text-gray-700">Teaching Hour</label>
-                <input type="number" id="teaching-hour" placeholder="enter hour of teaching..."
+                <input type="number" id="teaching-hour" placeholder="enter hour of teaching..." step="0.5"
                     class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700 placeholder:text-gray-300 shadow-sm">
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="extends" class="font-semibold text-gray-700">What did you do?</label>
-                <textarea id="extends" name="extends" rows="4" placeholder="e.g., Design screens for Worky app"
+                <label for="description" class="font-semibold text-gray-700">What did you do?</label>
+                <textarea id="description" name="description" rows="4" placeholder="e.g., Design screens for Worky app"
                     class="border border-gray-200 p-4 rounded-xl bg-gray-50/50 w-full break-words resize-y focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition"></textarea>
             </div>
 
@@ -65,14 +70,22 @@
 
     <nav
         class="flex fixed bottom-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-md">
-
         <img src="../assets/history_icon.svg" alt="history" id="btn-to-history" width="50" height="50">
         <img src="../assets/home_icon.svg" alt="home" id="btn-to-home" width="40" height="40">
         <img src="../assets/clock_icon.svg" id="btn-to-timeSave" alt="home" width="50" height="50">
-
     </nav>
 
     <script src="../action/navAction.js"></script>
+    <script src="../action/saveTime.js"></script>
+
+    <!-- Script สำหรับเซ็ตค่าเริ่มต้นของวันที่เป็นวันนี้ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('work-date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.value = today;
+        });
+    </script>
 </body>
 
 </html>

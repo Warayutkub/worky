@@ -12,20 +12,44 @@
 <body class="flex flex-col items-center gap-6 bg-gray-50 min-h-screen pb-24">
 
     <div class="w-full max-w-md px-6 pt-6 flex flex-col gap-3">
-        <h1 class="font-bold text-xl text-gray-800">
-            Total Hours
-        </h1>
+        <!-- หัวข้อ + ปุ่ม Refresh -->
+        <div class="flex flex-row justify-between items-center">
+            <h1 class="font-bold text-xl text-gray-800">
+                Total Hours
+            </h1>
+            <button id="btn-refresh" class="flex items-center gap-1.5 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg border border-blue-200 transition-all active:scale-95">
+                <svg id="refresh-icon" class="w-3.5 h-3.5 text-blue-600 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                <span>อัปเดตข้อมูล</span>
+            </button>
+        </div>
 
-        <div class="flex flex-row justify-between items-center gap-6 bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm">
+        <div class="flex flex-row justify-between items-center gap-6 bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm relative overflow-hidden" id="total-hours-card">
+            
+            <!-- Loading Overlay -->
+            <div id="loading-overlay" class="absolute inset-0 bg-blue-50/90 backdrop-blur-sm flex items-center justify-between p-6 z-10 transition-opacity duration-300 hidden">
+                <div class="flex flex-col gap-2 w-1/2">
+                    <div class="h-8 bg-blue-200/60 rounded-lg animate-pulse w-24"></div>
+                    <div class="h-5 bg-blue-200/40 rounded-lg animate-pulse w-16"></div>
+                </div>
+                <div class="bg-blue-200 w-px h-14 rounded-full"></div>
+                <div class="flex flex-col gap-2 items-end w-1/3">
+                    <div class="h-9 bg-blue-200/60 rounded-lg animate-pulse w-20"></div>
+                    <div class="h-4 bg-blue-200/40 rounded-lg animate-pulse w-10"></div>
+                </div>
+            </div>
+
+            <!-- Real Content -->
             <div class="flex flex-col gap-1 font-semibold text-blue-950">
-                <span class="text-3xl font-bold">15 Hr.</span>
-                <span class="text-xl text-blue-800/80">30 min.</span>
+                <span class="text-3xl font-bold" id="display-hr-min">0 Hr.</span>
+                <span class="text-xl text-blue-800/80" id="display-min">0 min.</span>
             </div>
             
             <div class="bg-blue-200 w-px h-14 rounded-full"></div>
 
             <div class="flex flex-col gap-1 items-end font-bold text-right text-blue-950">
-                <span class="text-4xl">15.5</span>
+                <span class="text-4xl" id="display-decimal">0.00</span>
                 <span class="text-lg text-blue-800/80">Hr.</span>
             </div>
         </div>
@@ -36,22 +60,20 @@
             Average
         </h1>
 
-        <div class="bg-white shadow-sm border border-gray-100 p-4 rounded-2xl w-full h-72">
+        <div class="bg-white shadow-sm border border-gray-100 p-4 rounded-2xl w-full h-72 relative overflow-hidden">
             <canvas id="AverageChartMain"></canvas>
         </div>
     </div>
 
-    <nav
-        class="flex fixed bottom-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-md">
-
-        <img src="./assets/history_icon.svg" alt="history" id="btn-to-history" width="50" height="50">
-        <img src="./assets/home_icon.svg" alt="home" id="btn-to-home" width="40" height="40">
-        <img src="./assets/clock_icon.svg" id="btn-to-timeSave" alt="home" width="50" height="50">
-
+    <nav class="flex fixed bottom-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-md z-20">
+        <img src="./assets/history_icon.svg" alt="history" id="btn-to-history" width="50" height="50" class="cursor-pointer">
+        <img src="./assets/home_icon.svg" alt="home" id="btn-to-home" width="40" height="40" class="cursor-pointer">
+        <img src="./assets/clock_icon.svg" id="btn-to-timeSave" alt="home" width="50" height="50" class="cursor-pointer">
     </nav>
 
     <script src="./action/navAction.js"></script>
     <script src="./action/chartAction.js"></script>
+    <script src="./action/home.js"></script>
 </body>
 
 </html>
