@@ -45,16 +45,10 @@
     </div>
 
     <!-- Bottom Navigation -->
-    <nav class="flex fixed bottom-0 left-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-lg border-t border-white/10 z-50">
-        <div class="p-2 rounded-xl cursor-pointer" id="btn-to-history">
-            <img src="../assets/history_icon.svg" alt="history" width="32" height="32">
-        </div>
-        <div class="p-2 rounded-xl cursor-pointer hover:bg-white/10 transition" id="btn-to-home">
-            <img src="../assets/home_icon.svg" alt="home" width="32" height="32">
-        </div>
-        <div class="p-2 rounded-xl cursor-pointer hover:bg-white/10 transition" id="btn-to-timeSave">
-            <img src="../assets/clock_icon.svg" alt="clock" width="32" height="32">
-        </div>
+    <nav class="flex fixed bottom-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-md z-20">
+        <img src="./assets/history_icon.svg" alt="history" id="btn-to-history" width="50" height="50" class="cursor-pointer">
+        <img src="./assets/home_icon.svg" alt="home" id="btn-to-home" width="40" height="40" class="cursor-pointer">
+        <img src="./assets/clock_icon.svg" id="btn-to-timeSave" alt="home" width="50" height="50" class="cursor-pointer">
     </nav>
 
     <script src="../action/navAction.js"></script>
