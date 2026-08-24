@@ -1,15 +1,15 @@
 const btn_array = [
     {
         btn : document.getElementById('btn-to-history'),
-        to : "/history/"
+        to : "./history/"
     },
     {
         btn : document.getElementById('btn-to-timeSave'),
-        to : "/timeSave/"
+        to : "./timeSave/"
     },
     {
         btn : document.getElementById('btn-to-home'),
-        to : "/"
+        to : "./"
     },
     
     
@@ -27,7 +27,7 @@ btn_array.forEach(({btn,to})=>{
     const currentPath = window.location.pathname
 
     btn.addEventListener('click',()=>{
-        window.location.href=to
+        window.location.href = new URL(to, window.location.href).href;
     })
     
     if (currentPath === to || currentPath === `${to}/` || (to !== '/' && currentPath.startsWith(to))) {
