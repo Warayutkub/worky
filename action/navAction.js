@@ -1,17 +1,31 @@
+// const btn_array = [
+//     {
+//         btn : document.getElementById('btn-to-history'),
+//         to : "/worky/history"
+//     },
+//     {
+//         btn : document.getElementById('btn-to-timeSave'),
+//         to : "/worky/timeSave"
+//     },
+//     {
+//         btn : document.getElementById('btn-to-home'),
+//         to : "/worky/"
+//     },
+    
+// ]
 const btn_array = [
     {
         btn : document.getElementById('btn-to-history'),
-        to : "/worky/history"
+        to : "/history"
     },
     {
         btn : document.getElementById('btn-to-timeSave'),
-        to : "/worky/timeSave"
+        to : "/timeSave"
     },
     {
         btn : document.getElementById('btn-to-home'),
-        to : "/worky/"
+        to : "/"
     },
-    
     
 ]
 

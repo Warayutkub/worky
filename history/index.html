@@ -8,17 +8,104 @@
     <title>Worky | History</title>
 </head>
 
-<body class="flex flex-col items-center gap-6 bg-gray-50 min-h-screen pb-20">
+<body class="flex flex-col items-center gap-6 bg-gray-50 min-h-screen pb-24">
 
-    <nav
-        class="flex fixed bottom-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-md">
+    <!-- Header Section -->
+    <div class="w-full max-w-md px-6 pt-6 flex justify-between items-center">
+        <h1 class="font-bold text-2xl text-gray-800">
+            Work History
+        </h1>
+        <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+            Total 15.5 Hrs
+        </span>
+    </div>
 
-        <img src="../assets/history_icon.svg" alt="history" id="btn-to-history" width="50" height="50">
-        <img src="../assets/home_icon.svg" alt="home" id="btn-to-home" width="40" height="40">
-        <img src="../assets/clock_icon.svg" id="btn-to-timeSave" alt="home" width="50" height="50">
+    <!-- History Container -->
+    <div class="w-full max-w-md px-6 flex flex-col gap-6">
 
+        <!-- ================= SECTION: NOVEMBER 2026 ================= -->
+        <div class="flex flex-col gap-3">
+            <!-- Month Header -->
+            <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                <h2 class="font-bold text-lg text-gray-700">November 2026</h2>
+                <span class="text-xs font-medium text-gray-400">15.5 Hrs total</span>
+            </div>
+
+            <!-- Item 1 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                        <span class="font-bold text-gray-800">28/11/2026</span>
+                    </div>
+                    <span class="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-xl text-xs">
+                        8.0 Hr.
+                    </span>
+                </div>
+                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
+                    <span class="text-gray-400">09:00 - 17:00</span>
+                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Design screens for Worky app</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                        <span class="font-bold text-gray-800">27/11/2026</span>
+                    </div>
+                    <span class="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-xl text-xs">
+                        7.5 Hr.
+                    </span>
+                </div>
+                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
+                    <span class="text-gray-400">09:30 - 17:00</span>
+                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Fix navigation bugs & UI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SECTION: OCTOBER 2026 ================= -->
+        <div class="flex flex-col gap-3">
+            <!-- Month Header -->
+            <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                <h2 class="font-bold text-lg text-gray-700">October 2026</h2>
+                <span class="text-xs font-medium text-gray-400">16.0 Hrs total</span>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-gray-400"></span>
+                        <span class="font-bold text-gray-800">31/10/2026</span>
+                    </div>
+                    <span class="font-bold text-gray-600 bg-gray-100 px-3 py-1 rounded-xl text-xs">
+                        8.0 Hr.
+                    </span>
+                </div>
+                <div class="flex justify-between items-center text-xs border-t border-gray-50 pt-2">
+                    <span class="text-gray-400">08:30 - 16:30</span>
+                    <span class="text-gray-600 font-medium truncate max-w-[200px]">Setup project structure</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="flex fixed bottom-0 left-0 bg-gradient-to-b from-[#1e90ff] to-[#4169e1] w-full h-16 p-2 justify-evenly shadow-lg border-t border-white/10 z-50">
+        <div class="p-2 rounded-xl cursor-pointer bg-white shadow" id="btn-to-history">
+            <img src="../assets/history_icon.svg" alt="history" width="32" height="32">
+        </div>
+        <div class="p-2 rounded-xl cursor-pointer hover:bg-white/10 transition" id="btn-to-home">
+            <img src="../assets/home_icon.svg" alt="home" width="32" height="32">
+        </div>
+        <div class="p-2 rounded-xl cursor-pointer hover:bg-white/10 transition" id="btn-to-timeSave">
+            <img src="../assets/clock_icon.svg" alt="clock" width="32" height="32">
+        </div>
     </nav>
-
 
     <script src="../action/navAction.js"></script>
 </body>

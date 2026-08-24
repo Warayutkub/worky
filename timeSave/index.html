@@ -10,18 +10,18 @@
 
 <body class="flex flex-col items-center gap-6 bg-gray-50 min-h-screen pb-20">
 
-    
+
 
     <div class="bg-white shadow-xl rounded-3xl border border-gray-100 p-8 w-[95%] max-w-2xl flex flex-col gap-8">
-        
-        <div class="flex flex-row justify-between items-center gap-6 bg-blue-50 p-6 rounded-2xl border border-blue-100">
+
+        <div class="flex flex-row justify-between items-center gap-6 bg-blue-50 p-4 rounded-2xl border border-blue-100">
             <div class="flex flex-col gap-2 font-semibold text-blue-950">
                 <span class="text-4xl">15 Hr.</span>
                 <span class="text-2xl text-blue-800/80">30 min.</span>
             </div>
-            
-            <div class="bg-blue-200 w-px h-16 rounded-full"></div> 
-            
+
+            <div class="bg-blue-200 w-px h-16 rounded-full"></div>
+
             <div class="flex flex-col gap-1 items-end font-bold text-right text-blue-950">
                 <span class="text-5xl">15.5</span>
                 <span class="text-2xl text-blue-800/80">Hr.</span>
@@ -33,24 +33,31 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="flex flex-col gap-2">
                     <label for="time-start" class="font-semibold text-gray-700">Time Starts</label>
-                    <input type="time" name="time-start" id="time-start" 
-                           class="border border-gray-200 p-3.5 rounded-xl bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition">
+                    <input type="time" name="time-start" id="time-start"
+                        class="border border-gray-200 p-3.5 rounded-xl bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition">
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="time-end" class="font-semibold text-gray-700">Time End</label>
-                    <input type="time" name="time-end" id="time-end" 
-                           class="border border-gray-200 p-3.5 rounded-xl bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition">
+                    <input type="time" name="time-end" id="time-end"
+                        class="border border-gray-200 p-3.5 rounded-xl bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition">
                 </div>
             </div>
 
             <div class="flex flex-col gap-2">
-                <label for="extends" class="font-semibold text-gray-700">What did you do?</label>
-                <textarea id="extends" name="extends" rows="4" placeholder="e.g., Design screens for Worky app" 
-                          class="border border-gray-200 p-4 rounded-xl bg-gray-50/50 w-full break-words resize-y focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition"></textarea>
+                <label for="teaching-hour" class="font-semibold text-gray-700">Teaching Hour</label>
+                <input type="number" id="teaching-hour" placeholder="enter hour of teaching..."
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-700 placeholder:text-gray-300 shadow-sm">
             </div>
 
-            <button type="submit" class="bg-green-400 text-green-950 font-bold rounded-xl p-4 hover:bg-green-500 transition shadow-md hover:shadow-lg">
+            <div class="flex flex-col gap-2">
+                <label for="extends" class="font-semibold text-gray-700">What did you do?</label>
+                <textarea id="extends" name="extends" rows="4" placeholder="e.g., Design screens for Worky app"
+                    class="border border-gray-200 p-4 rounded-xl bg-gray-50/50 w-full break-words resize-y focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white focus:border-blue-300 transition"></textarea>
+            </div>
+
+            <button type="submit"
+                class="bg-green-400 text-green-950 font-bold rounded-xl p-4 hover:bg-green-500 transition shadow-md hover:shadow-lg">
                 Save Work Time
             </button>
         </form>
