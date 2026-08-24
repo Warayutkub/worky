@@ -43,8 +43,8 @@ btn_array.forEach(({btn,to})=>{
     btn.addEventListener('click',()=>{
         window.location.href = new URL(to, window.location.href).href;
     })
-    
-    if (currentPath === to || currentPath === `${to}/` || (to !== '/' && currentPath.startsWith(to))) {
+    // || currentPath === `${to}/` || (to !== '/' && currentPath.startsWith(to))
+    if (currentPath === to ) {
         btn.classList.add(
             '-translate-y-4',
             'transition-all',
