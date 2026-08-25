@@ -6,10 +6,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRefresh = document.getElementById('btn-refresh-history');
     const refreshIcon = document.getElementById('refresh-icon');
 
-    // แปลงวันที่ "YYYY-MM-DD" เป็น "DD/MM/YYYY" โดยตัดคำตรงๆ เพื่อป้องกันปัญหา Timezone Shift (วันที่ลดลง 1 วัน)
+    function getDateKey(dateValue) {
+        if (!dateValue) return '';
+        if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+            return dateValue;
+        }
+
+        const date = new Date(dateValue);
+        if (isNaN(date.getTime())) return '';
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     function formatDateDisplay(dateStr) {
         if (!dateStr) return '';
-        const cleanDate = typeof dateStr === 'string' ? dateStr.split('T')[0] : '';
+        const cleanDate = getDateKey(dateStr);
         const parts = cleanDate.split('-');
         if (parts.length < 3) return dateStr;
         
@@ -60,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // เรียงลำดับจากวันที่ล่าสุดขึ้นก่อนโดยเปรียบเทียบจากสตริงวันที่โดยตรง
         const sortedData = [...allData].sort((a, b) => {
-            const dateA = typeof a.date === 'string' ? a.date.split('T')[0] : '';
-            const dateB = typeof b.date === 'string' ? b.date.split('T')[0] : '';
+            const dateA = getDateKey(a.date);
+            const dateB = getDateKey(b.date);
             return dateB.localeCompare(dateA);
         });
 
@@ -71,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // จัดกลุ่มตามเดือน
         sortedData.forEach(item => {
             if (!item.date) return;
-            const cleanDate = typeof item.date === 'string' ? item.date.split('T')[0] : '';
+            const cleanDate = getDateKey(item.date);
             const parts = cleanDate.split('-');
             if (parts.length < 2) return;
 

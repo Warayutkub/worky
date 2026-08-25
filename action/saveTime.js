@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayMin = document.getElementById('display-min');
     const displayDecimal = document.getElementById('display-decimal');
 
+    function getLocalDateValue() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     // ฟังก์ชันคำนวณและคืนค่าชั่วโมงทศนิยม
     function calculateTime() {
         const startVal = timeStartInput ? timeStartInput.value : '';
@@ -101,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resetDisplay();
                     
                     const dateInput = document.getElementById('work-date');
-                    if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
+                    if (dateInput) dateInput.value = getLocalDateValue();
                 } else {
                     alert('เกิดข้อผิดพลาด: ' + result.message);
                 }

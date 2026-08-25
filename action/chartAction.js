@@ -53,11 +53,26 @@ function processChartData(allData) {
 
     const monthTotals = {};
 
+    function getDateKey(dateValue) {
+        if (!dateValue) return '';
+        if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+            return dateValue;
+        }
+
+        const date = new Date(dateValue);
+        if (isNaN(date.getTime())) return '';
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     allData.forEach(item => {
         if (!item.date) return;
 
-        // ดึง YYYY-MM ออกมาจาก date string (รองรับทั้ง "YYYY-MM-DD" และ ISO String)
-        const dateStr = typeof item.date === 'string' ? item.date.split('T')[0] : '';
+        // แปลง ISO จาก Google Sheets เป็นวันที่ตาม timezone ของเครื่องก่อนจัดกลุ่ม
+        const dateStr = getDateKey(item.date);
         const parts = dateStr.split('-');
         if (parts.length < 2) return;
 

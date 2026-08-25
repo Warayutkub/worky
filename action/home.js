@@ -9,6 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRefresh = document.getElementById('btn-refresh');
     const refreshIcon = document.getElementById('refresh-icon');
 
+    function getDateKey(dateValue) {
+        if (!dateValue) return '';
+        if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+            return dateValue;
+        }
+
+        const date = new Date(dateValue);
+        if (isNaN(date.getTime())) return '';
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     // ฟังก์ชันคำนวณและอัปเดต UI จาก Array ข้อมูล
     function updateUI(allData) {
         const now = new Date();
@@ -17,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentMonthData = allData.filter(item => {
             if (!item.date) return false;
-            const dateStr = typeof item.date === 'string' ? item.date.split('T')[0] : '';
+            const dateStr = getDateKey(item.date);
             const [yearStr, monthStr] = dateStr.split('-');
             
             if (!yearStr || !monthStr) return false;
